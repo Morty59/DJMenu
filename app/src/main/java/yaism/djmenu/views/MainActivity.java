@@ -1,17 +1,28 @@
-package yaism.djmenu;
+package yaism.djmenu.views;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import net.sqlcipher.database.SQLiteDatabase;
 
-import yaism.djmenu.database.DAO.SomethingDAO;
+import layout.AddMenuFragment;
+import layout.HomeFragment;
+import yaism.djmenu.R;
+import yaism.djmenu.database.DataBaseOpenHelper;
+import yaism.djmenu.database.Entity.DaoMaster;
+import yaism.djmenu.database.Entity.DaoSession;
+import yaism.djmenu.database.Entity.StarterEntity;
+import yaism.djmenu.database.Entity.StarterEntityDao;
+import yaism.djmenu.views.manager.NavigationManager;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity
+implements HomeFragment.OnFragmentInteractionListener, AddMenuFragment.OnFragmentInteractionListener{
 
     private TextView mTextMessage;
 
@@ -20,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
+            /*switch (item.getItemId()) {
                 case R.id.navigation_home:
                     mTextMessage.setText(R.string.title_home);
                     return true;
@@ -30,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
                     return true;
-            }
-            return false;
+            }*/
+
+            return NavigationManager.showFragment(item.getItemId());
         }
 
     };
@@ -41,13 +53,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        SQLiteDatabase.loadLibs(this);
-        SomethingDAO smthDao = new SomethingDAO(this);
-        smthDao.createSomething();
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }

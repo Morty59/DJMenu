@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">DJ Menu</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Planning</string>
+    <string name="title_search_menu">Rechercher</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_addmenu">Ajouter</string>
 </resources>
