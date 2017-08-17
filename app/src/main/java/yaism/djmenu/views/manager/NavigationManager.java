@@ -2,10 +2,10 @@ package yaism.djmenu.views.manager;
 
 import android.support.v4.app.FragmentTransaction;
 
-import layout.AddMenuFragment;
-import layout.HomeFragment;
-import yaism.djmenu.R;
 import yaism.djmenu.DJMenuApplication;
+import yaism.djmenu.R;
+import yaism.djmenu.views.fragments.AddMenuFragment;
+import yaism.djmenu.views.fragments.SearchFragment;
 
 /**
  * Created by a105225 on 23/03/2017.
@@ -20,10 +20,11 @@ public class NavigationManager {
             FragmentTransaction ft = DJMenuApplication.getInstance().getFragmentManagerApplication().beginTransaction();
 
             if (id == R.id.navigation_home) {
-                ft.replace(R.id.main_content, new HomeFragment());
+
             } else if (id == R.id.navigation_search_menu) {
-                ft.replace(R.id.main_content, new AddMenuFragment());
+                ft.replace(R.id.main_content, new SearchFragment());
             } else if (id == R.id.navigation_add_menu) {
+                ft.replace(R.id.main_content, new AddMenuFragment());
             }
             ft.commit();
         }else{

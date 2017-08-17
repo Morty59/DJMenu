@@ -33,11 +33,12 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
         db = this.getWritableDatabase(password);
 
         encryptedDatabase = new EncryptedDatabase(db);
+        DaoMaster.createAllTables(encryptedDatabase, true);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        DaoMaster.createAllTables(encryptedDatabase, true);
+
     }
 
     @Override
