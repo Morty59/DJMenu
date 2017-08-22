@@ -8,9 +8,8 @@ import yaism.djmenu.views.fragments.AddMenuFragment;
 import yaism.djmenu.views.fragments.SearchFragment;
 
 /**
- * Created by a105225 on 23/03/2017.
+ * Gestion de la navigation
  */
-
 public class NavigationManager {
 
     public static boolean showFragment(int id){
@@ -21,7 +20,7 @@ public class NavigationManager {
 
             if (id == R.id.navigation_home) {
 
-            } else if (id == R.id.navigation_search_menu) {
+            } else if (id == R.id.navigation_list_shopping) {
                 ft.replace(R.id.main_content, new SearchFragment());
             } else if (id == R.id.navigation_add_menu) {
                 ft.replace(R.id.main_content, new AddMenuFragment());

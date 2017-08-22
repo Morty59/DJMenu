@@ -37,6 +37,13 @@ implements SearchFragment.OnFragmentInteractionListener, AddMenuFragment.OnFragm
     }
 
     @Override
+    protected void onResume(){
+        super.onResume();
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_home);
+    }
+
+    @Override
     public void onFragmentInteraction(Uri uri) {
 
     }
