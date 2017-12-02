@@ -1,24 +1,29 @@
 package yaism.djmenu.views.fragments;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import yaism.djmenu.R;
+import yaism.djmenu.databinding.FragmentAddMenuBinding;
+import yaism.djmenu.views.fragments.fragmentinterface.OnFragmentInteractionListener;
+import yaism.djmenu.views.model.RecipeView;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AddMenuFragment.OnFragmentInteractionListener} interface
+ * {@link OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link AddMenuFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddMenuFragment extends Fragment {
+public class AddMenuFragment extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,6 +34,8 @@ public class AddMenuFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private Button btSaveRecipe;
 
     public AddMenuFragment() {
         // Required empty public constructor
@@ -65,7 +72,14 @@ public class AddMenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_menu, container, false);
+        FragmentAddMenuBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_menu, container, false);
+        View view = binding.getRoot();
+        binding.setFragAddMenu(this);
+        binding.setBindRecipe(new RecipeView());
+
+        btSaveRecipe = (Button) view.findViewById(R.id.save_recipe);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -92,18 +106,7 @@ public class AddMenuFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public void onSaveRecipeClick(View v) {
+        System.out.println("Add RECIPE !");
     }
 }
