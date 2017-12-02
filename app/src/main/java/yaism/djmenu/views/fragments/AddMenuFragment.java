@@ -14,6 +14,7 @@ import yaism.djmenu.R;
 import yaism.djmenu.databinding.FragmentAddMenuBinding;
 import yaism.djmenu.views.fragments.fragmentinterface.OnFragmentInteractionListener;
 import yaism.djmenu.views.model.RecipeView;
+import yaism.djmenu.views.viewmodel.RecipeViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,6 +77,7 @@ public class AddMenuFragment extends Fragment{
         View view = binding.getRoot();
         binding.setFragAddMenu(this);
         binding.setBindRecipe(new RecipeView());
+        binding.setRecipeViewModel(new RecipeViewModel(binding.getBindRecipe()));
 
         btSaveRecipe = (Button) view.findViewById(R.id.save_recipe);
 
@@ -104,9 +106,5 @@ public class AddMenuFragment extends Fragment{
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    public void onSaveRecipeClick(View v) {
-        System.out.println("Add RECIPE !");
     }
 }

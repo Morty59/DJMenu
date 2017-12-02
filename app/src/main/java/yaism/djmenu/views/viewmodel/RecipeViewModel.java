@@ -7,10 +7,16 @@ import yaism.djmenu.views.model.RecipeView;
  */
 
 public class RecipeViewModel {
+    private RecipeView recipeView;
+
+    public RecipeViewModel(RecipeView recipe){
+        this.recipeView = recipe;
+    }
+
     /**
      * Handler onClick add recipe
      */
-    public void onAddRecipeClick(RecipeView recipe){
+    public void onSaveRecipeClick(){
         System.out.println("Add RECIPE !");
     }
 }

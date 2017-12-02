@@ -2,6 +2,7 @@
 <data>
     <!--import type="android.view.View"/-->
     <variable name="fragAddMenu" type="yaism.djmenu.views.fragments.AddMenuFragment"/>
+    <variable name="recipeViewModel" type="yaism.djmenu.views.viewmodel.RecipeViewModel"/>
     <variable name="bindRecipe" type="yaism.djmenu.views.model.RecipeView"/>
 </data>
 
@@ -59,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add_recipe"
-            android:onClick="@{fragAddMenu :: onSaveRecipeClick}"/>
+            android:onClick="@{() -> recipeViewModel.onSaveRecipeClick()}"/>
     </LinearLayout>
 </FrameLayout>
 </layout>
