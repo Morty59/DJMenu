@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import yaism.djmenu.DJMenuApplication;
 import yaism.djmenu.R;
 import yaism.djmenu.views.fragments.AddMenuFragment;
+import yaism.djmenu.views.fragments.PlanningFragment;
 import yaism.djmenu.views.fragments.SearchFragment;
 
 /**
@@ -19,7 +20,7 @@ public class NavigationManager {
             FragmentTransaction ft = DJMenuApplication.getInstance().getFragmentManagerApplication().beginTransaction();
 
             if (id == R.id.navigation_home) {
-
+                ft.replace(R.id.main_content, new PlanningFragment());
             } else if (id == R.id.navigation_list_shopping) {
                 ft.replace(R.id.main_content, new SearchFragment());
             } else if (id == R.id.navigation_add_menu) {

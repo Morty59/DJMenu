@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_djmenu" default="compile.module.djmenu">
+  <dirname property="module.djmenu.basedir" file="${ant.file.module_djmenu}"/>
+  
+  <property name="module.jdk.home.djmenu" value="${jdk.home.1.8}"/>
+  <property name="module.jdk.bin.djmenu" value="${jdk.bin.1.8}"/>
+  <property name="module.jdk.classpath.djmenu" value="jdk.classpath.1.8"/>
+  
+  <property name="compiler.args.djmenu" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="djmenu.output.dir" value="${module.djmenu.basedir}/build/classes/production/DJMenu"/>
+  <property name="djmenu.testoutput.dir" value="${module.djmenu.basedir}/build/classes/test/DJMenu"/>
+  
+  <path id="djmenu.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="djmenu.module.production.classpath">
+    <path refid="${module.jdk.classpath.djmenu}"/>
+  </path>
+  
+  <path id="djmenu.runtime.production.module.classpath">
+    <pathelement location="${djmenu.output.dir}"/>
+  </path>
+  
+  <path id="djmenu.module.classpath">
+    <path refid="${module.jdk.classpath.djmenu}"/>
+    <pathelement location="${djmenu.output.dir}"/>
+  </path>
+  
+  <path id="djmenu.runtime.module.classpath">
+    <pathelement location="${djmenu.testoutput.dir}"/>
+    <pathelement location="${djmenu.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.djmenu">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.djmenu">
+    <patternset refid="excluded.from.module.djmenu"/>
+  </patternset>
+  
+  
+  <target name="compile.module.djmenu" depends="compile.module.djmenu.production,compile.module.djmenu.tests" description="Compile module DJMenu"/>
+  
+  <target name="compile.module.djmenu.production" depends="register.custom.compilers" description="Compile module DJMenu; production classes"/>
+  
+  <target name="compile.module.djmenu.tests" depends="register.custom.compilers,compile.module.djmenu.production" description="compile module DJMenu; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.djmenu" description="cleanup module">
+    <delete dir="${djmenu.output.dir}"/>
+    <delete dir="${djmenu.testoutput.dir}"/>
+  </target>
+</project>

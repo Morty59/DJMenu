@@ -8,12 +8,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import yaism.djmenu.R;
-import yaism.djmenu.views.fragments.AddMenuFragment;
-import yaism.djmenu.views.fragments.SearchFragment;
+import yaism.djmenu.views.fragments.fragmentinterface.OnFragmentInteractionListener;
 import yaism.djmenu.views.manager.NavigationManager;
 
-public class MainActivity extends BaseActivity
-implements SearchFragment.OnFragmentInteractionListener, AddMenuFragment.OnFragmentInteractionListener{
+public class MainActivity extends BaseActivity implements OnFragmentInteractionListener {
 
     private TextView mTextMessage;
 
